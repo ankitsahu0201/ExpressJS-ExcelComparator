@@ -29,7 +29,7 @@
       </div>
       <div class="row">
         <div class="col-lg">
-          <button type="button" class="btn btn-dark btn-lg">Compare</button>
+          <button type="button" class="btn btn-dark btn-lg" onclick="compare()">Compare</button>
         </div>
       </div>
       <footer>Copy Right 2020 @ ankitsahu0201</footer>
@@ -53,6 +53,7 @@
 
   <script>
     function checkfile(sender) {
+        console.log(sender.id);
         var validExts = new Array(".xlsx", ".xls");
         var fileExt = sender.value;
         fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
@@ -63,10 +64,33 @@
           }, 3000);
           setTimeout(function() {
             sender.parentNode.querySelectorAll(".inf__hint")[0].innerText = "or drag and drop files here";
+            $("#" + sender.id).val("");
           }, 500);
           return false;
         }
         else return true;
+    }
+  </script>
+
+  <script type="text/javascript">
+    function compare(){
+      if ($("#file1").val().trim().length == 0){
+        document.querySelector("#file1").parentNode.style.borderColor = "red";
+      }
+      else{
+        document.querySelector("#file1").parentNode.style.borderColor = "green";
+      }
+      if ($("#file2").val().trim().length == 0){
+        document.querySelector("#file2").parentNode.style.borderColor = "red";
+      }
+      else{
+        document.querySelector("#file2").parentNode.style.borderColor = "green";
+      }
+
+      if ($("#file1").val().trim().length > 0 && $("#file2").val().trim().length > 0)
+      {
+        
+      }
     }
   </script>
 
