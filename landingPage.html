@@ -9,6 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/input-file.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/alert.css">
   </head>
   <body>
     <div class="container layout">
@@ -20,10 +21,10 @@
       </div>
       <div class="row content">
         <div class="col-lg-6">
-          <input type="file" name="files" accept="application/vnd.ms-excel" multiple>
+          <input type="file" name="files" id="file1" accept=".xlsx,.xls,application/vnd.ms-excel" onchange="checkfile(this);" multiple>
         </div>
         <div class="col-lg-6">
-          <input type="file" name="files" accept="application/vnd.ms-excel" multiple>
+          <input type="file" name="files" id="file2" accept=".xlsx,.xls,application/vnd.ms-excel" onchange="checkfile(this);" multiple>
         </div>
       </div>
       <div class="row">
@@ -33,6 +34,12 @@
       </div>
       <footer>Copy Right 2020 @ ankitsahu0201</footer>
     </div>
+
+    <div class="alert warning" id="alertWarning">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong> Error!</strong> Invalid file selected, valid files are of .xlsx or .xls types.
+    </div>
+
     <script src="../js/input-file.min.js"></script>
 	<script>
 		new InputFile({
@@ -40,10 +47,28 @@
       hint: "or drag and drop files here",
       message: "files chosen"
 		});
-
     $("span").css('color','white');
     $("div.inf__drop-area").addClass("dropzone");
 	</script>
+
+  <script>
+    function checkfile(sender) {
+        var validExts = new Array(".xlsx", ".xls");
+        var fileExt = sender.value;
+        fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+        if (validExts.indexOf(fileExt) < 0) {
+          $("#alertWarning").css('display','block');
+          setTimeout(function(){
+            $("#alertWarning").css('display','none');
+          }, 3000);
+          setTimeout(function() {
+            sender.parentNode.querySelectorAll(".inf__hint")[0].innerText = "or drag and drop files here";
+          }, 500);
+          return false;
+        }
+        else return true;
+    }
+  </script>
 
   </body>
 </html>
