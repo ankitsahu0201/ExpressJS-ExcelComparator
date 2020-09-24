@@ -1,0 +1,54 @@
+/* Generic */
+html{
+  height:100%;
+}
+
+.layout{
+  text-align: center;
+}
+
+body{
+  /* background-color: #404b69; */
+  background-image: linear-gradient( #000, #fbe8d3);
+}
+
+h1, h5{
+  font-family: sans-serif;
+}
+
+h1{
+  color : #ff6f3c;
+  padding-top: 20px;
+  font-size: 5rem;
+}
+
+h5{
+  color: #ffc93c;
+}
+
+footer{
+  color: #283149;
+  position:fixed;
+  bottom:0;left:0;
+  right:0;
+  height:30px;
+}
+
+.content{
+  padding-top: 100px;
+}
+
+.dropzone{
+  border-color: white;
+  border-width: medium;
+  padding: 20px;
+  height: 100px;
+  position: relative;
+  left: 20px;
+}
+
+button{
+  position: relative;
+  top: 100px;
+  right: 25px;
+}
